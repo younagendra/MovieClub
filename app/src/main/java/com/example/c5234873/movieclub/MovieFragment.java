@@ -24,7 +24,9 @@ import static com.example.c5234873.movieclub.MoviAPICall.getMovieInfoJson;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends Fragment {
-
+    GridView mGridView = null;
+    MovieAdapter mMovieInfoAdapter = null;
+    ArrayList<com.example.c5234873.movieclub.Movie> movieArrayList = null;
 
     public MovieFragment() {
         // Required empty public constructor
@@ -36,23 +38,24 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView;
         // Inflate the layout for this fragment
-        rootView  = inflater.inflate(R.layout.fragment_movie, container, false);
+        rootView = inflater.inflate(R.layout.fragment_movie, container, false);
 
         //get the gridview object.
-        GridView gridView = (GridView) container.findViewById(R.id.movie_grid);
+        mGridView = (GridView) container.findViewById(R.id.movie_grid);
 
-        List<Movie> moviePosterList = new ArrayList<>();
+        ArrayList<com.example.c5234873.movieclub.Movie> moviePosterList = new ArrayList<>();
 
-        MovieAdapter movieInfo = new MovieAdapter(getContext(),R.layout.grid_movie_items,moviePosterList);
-        gridView.setAdapter(movieInfo);
+        mMovieInfoAdapter = new MovieAdapter(getContext(), R.layout.grid_movie_items, moviePosterList);
+        mGridView.setAdapter(mMovieInfoAdapter);
 
         return rootView;
     }
-    private class AsyncMovieTask extends AsyncTask<String,View,List<com.example.c5234873.movieclub.Movie>>{
+
+    private class AsyncMovieTask extends AsyncTask<String, View, ArrayList<com.example.c5234873.movieclub.Movie>> {
 
         @Override
-        protected List<com.example.c5234873.movieclub.Movie> doInBackground(String... params) {
-            ArrayList<com.example.c5234873.movieclub.Movie> movieArrayList = null;
+        protected ArrayList<com.example.c5234873.movieclub.Movie> doInBackground(String... params) {
+
             try {
                 movieArrayList = MoviAPICall.getMovieInfoJson(params[0]);
             } catch (IOException e) {
@@ -61,6 +64,12 @@ public class MovieFragment extends Fragment {
                 e.printStackTrace();
             }
             return movieArrayList;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<com.example.c5234873.movieclub.Movie> movies) {
+            mMovieInfoAdapter.setGridData(movies);
+            super.onPostExecute(movies);
         }
     }
 
