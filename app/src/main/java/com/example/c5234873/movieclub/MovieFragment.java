@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import org.json.JSONException;
 
@@ -27,8 +28,11 @@ public class MovieFragment extends Fragment {
     GridView mGridView = null;
     MovieAdapter mMovieInfoAdapter = null;
     ArrayList<com.example.c5234873.movieclub.Movie> movieArrayList = null;
+    ProgressBar mProgressBar = null;
+    final static String API_URL = "https://api.themoviedb.org/3/movie/popular?api_key=7b678b90efe74639dc836f1c00423a60&language=en-US";
 
     public MovieFragment() {
+
         // Required empty public constructor
     }
 
@@ -38,15 +42,18 @@ public class MovieFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView;
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_movie, container, false);
+        rootView = inflater.inflate(R.layout.fragment_movie, container, true);
 
         //get the gridview object.
-        mGridView = (GridView) container.findViewById(R.id.movie_grid);
+        mGridView = (GridView) rootView.findViewById(R.id.movie_grid);
 
         ArrayList<com.example.c5234873.movieclub.Movie> moviePosterList = new ArrayList<>();
 
-        mMovieInfoAdapter = new MovieAdapter(getContext(), R.layout.grid_movie_items, moviePosterList);
-        mGridView.setAdapter(mMovieInfoAdapter);
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_indicator);
+
+        AsyncMovieTask movieTask = new AsyncMovieTask();
+        movieTask.execute(API_URL);
+        mProgressBar.setVisibility(View.VISIBLE);
 
         return rootView;
     }
@@ -68,8 +75,12 @@ public class MovieFragment extends Fragment {
 
         @Override
         protected void onPostExecute(ArrayList<com.example.c5234873.movieclub.Movie> movies) {
+            if (movies != null)
+                mMovieInfoAdapter = new MovieAdapter(getContext(), R.layout.grid_movie_items, movies);
+            mGridView.setAdapter(mMovieInfoAdapter);
             mMovieInfoAdapter.setGridData(movies);
-            super.onPostExecute(movies);
+            mProgressBar.setVisibility(View.GONE);
+
         }
     }
 

@@ -1,5 +1,19 @@
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/movie_grid"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:numColumns="auto_fit" />
+    android:layout_height="match_parent">
+
+    <ProgressBar
+        android:id="@+id/progress_indicator"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"/>
+
+    <GridView
+        android:id="@+id/movie_grid"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
+        android:stretchMode="columnWidth"
+        android:numColumns="2"/>
+</RelativeLayout>

@@ -26,7 +26,7 @@ import static android.content.ContentValues.TAG;
 public class MoviAPICall {
 
     String mUrl = null;
-    final static String BASE_IMAGE_URL = null;
+    final static String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w185/";
 
     public MoviAPICall() {
 
