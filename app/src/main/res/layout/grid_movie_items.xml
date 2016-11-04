@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/movie_poster"
         android:layout_width="match_parent"
@@ -12,21 +13,27 @@
         android:layout_alignParentTop="true"
         android:scaleType="centerCrop" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:background="#90263238"></View>
+
     <TextView
         android:id="@+id/movie_title"
+        android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:fontFamily="sans-serif-thin"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="8dp"
-        android:fontFamily="sans-serif"
-        android:text="@string/hello_blank_fragment"
-        android:textAllCaps="false"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:backgroundTint="@color/colorPrimary"
+        android:ellipsize="end"
+        android:maxLines="2"
         android:gravity="center_vertical"
-        android:ellipsize="end" />
-
+        android:text="@string/hello_blank_fragment"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        tools:ignore="RtlHardcoded" />
 </RelativeLayout>
 
 

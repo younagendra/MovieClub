@@ -1,6 +1,7 @@
 package com.example.c5234873.movieclub;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
@@ -52,7 +53,11 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
         }
 
         Movie movieInfo = mMovieInfo.get(position);
-        holder.titleTextView.setText(Html.fromHtml(movieInfo.mMovieName));
+
+//        Typeface fonts = Typeface.createFromAsset(mContext.getAssets(),"fonts/title.ttf");
+
+        holder.titleTextView.setText(movieInfo.mMovieName);
+//        holder.titleTextView.setTypeface(fonts);
 
         //get url from movieposter list
         String imageUrl = movieInfo.getPosterPath();

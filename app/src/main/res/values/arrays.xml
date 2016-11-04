@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pop_movies">
+        <item>@string/movie_by_pop_lable</item>
+        <item>@string/movie_by_top_rated_lable</item>
+    </string-array>
+    <string-array name="top_rated">
+        <item>@string/movie_by_pop_value</item>
+        <item>@string/movie_by_top_rated_value</item>
+    </string-array>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="@string/switch_item1_defualtvalue"
+        android:entries="@array/pop_movies"
+        android:entryValues="@array/top_rated"
+        android:title="@string/preference_lable"
+        android:key="@string/preference_value">
+
+    </ListPreference>
+</PreferenceScreen>

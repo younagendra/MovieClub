@@ -1,6 +1,21 @@
 <resources>
-    <string name="app_name">MovieClub</string>
+    <string name="app_name">Movie Club</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="switch_item1_defualtvalue">Popular Movies</string>
+
+    <string name="preference_value">movies_by</string>
+    <string name="preference_lable">Movies By</string>
+
+    <!--Popular movies setting info-->
+    <string name="movie_by_pop_lable">Popular Movies</string>
+    <string name="movie_by_pop_value">popular</string>
+
+    <!--Top rated movie setting info-->
+    <string name="movie_by_top_rated_lable">Top Rated</string>
+    <string name="movie_by_top_rated_value">top_rated</string>
+
+
 </resources>
