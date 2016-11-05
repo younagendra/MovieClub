@@ -65,8 +65,8 @@ public class MovieAdapter extends ArrayAdapter<Movie> {
 
         Picasso.with(mContext)
                 .load(imageUrl)
-                .centerCrop()
-                .resize(width/2 , width/2)
+//                .centerInside()
+                .resize(width/2 , 0)
                 .into(holder.imageView);
 
         return row;

@@ -20,6 +20,14 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.twotoasters.jazzylistview.JazzyGridView;
+import com.twotoasters.jazzylistview.effects.CardsEffect;
+import com.twotoasters.jazzylistview.effects.FlipEffect;
+import com.twotoasters.jazzylistview.effects.GrowEffect;
+import com.twotoasters.jazzylistview.effects.SlideInEffect;
+import com.twotoasters.jazzylistview.effects.TiltEffect;
+import com.twotoasters.jazzylistview.effects.TwirlEffect;
+
 import org.json.JSONException;
 
 import java.io.IOException;
@@ -35,7 +43,7 @@ import static java.security.AccessController.getContext;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends Fragment {
-    GridView mGridView = null;
+    JazzyGridView mJazzyGridView = null;
     MovieAdapter mMovieInfoAdapter = null;
     ArrayList<com.example.c5234873.movieclub.Movie> movieArrayList = null;
     ProgressBar mProgressBar = null;
@@ -56,17 +64,9 @@ public class MovieFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_movie, container, true);
 
-        //get the gridview object.
-        mGridView = (GridView) rootView.findViewById(R.id.movie_grid);
 
-        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-        });
-
-        ArrayList<com.example.c5234873.movieclub.Movie> moviePosterList = new ArrayList<>();
+        mJazzyGridView = (JazzyGridView) rootView.findViewById(R.id.grid);
+        mJazzyGridView.setTransitionEffect(new SlideInEffect());
 
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_indicator);
 
@@ -104,7 +104,7 @@ public class MovieFragment extends Fragment {
         protected void onPostExecute(ArrayList<com.example.c5234873.movieclub.Movie> movies) {
             if (movies != null)
                 mMovieInfoAdapter = new MovieAdapter(getContext(), R.layout.grid_movie_items, movies);
-            mGridView.setAdapter(mMovieInfoAdapter);
+            mJazzyGridView.setAdapter(mMovieInfoAdapter);
             mMovieInfoAdapter.setGridData(movies);
             mProgressBar.setVisibility(View.GONE);
 

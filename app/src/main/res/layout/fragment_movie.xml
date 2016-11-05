@@ -6,14 +6,19 @@
         android:id="@+id/progress_indicator"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
 
-    <GridView
-        android:id="@+id/movie_grid"
+    <com.twotoasters.jazzylistview.JazzyGridView
+        android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:verticalSpacing="4dp"
+        android:layout_height="wrap_content"
         android:horizontalSpacing="4dp"
+        android:columnWidth="90dp"
+        android:numColumns="2"
         android:stretchMode="columnWidth"
-        android:numColumns="2"/>
+        android:verticalSpacing="4dp">
+
+    </com.twotoasters.jazzylistview.JazzyGridView>
+
+
 </RelativeLayout>
